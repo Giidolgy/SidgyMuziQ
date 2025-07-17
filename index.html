@@ -1,0 +1,95 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SidgyMuziQ – Música Para Download</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+  </style>
+</head>
+<body class="bg-gray-950 text-white">
+
+  <nav class="flex items-center justify-between p-4 bg-gray-900">
+    <h1 class="text-2xl font-bold text-pink-500">SidgyMuziQ</h1>
+    <ul class="flex gap-4">
+      <li><a href="#home" class="hover:text-pink-400">Home</a></li>
+      <li><a href="#servicos" class="hover:text-pink-400">Serviços</a></li>
+      <li><a href="#depoimentos" class="hover:text-pink-400">Depoimentos</a></li>
+      <li><a href="#contato" class="hover:text-pink-400">Contato</a></li>
+      <li><a href="#login" class="hover:text-pink-400">Login</a></li>
+    </ul>
+  </nav>
+
+  <section id="home" class="text-center py-16 px-4 bg-gradient-to-r from-purple-900 to-black">
+    <h2 class="text-4xl font-bold mb-4">Bem‑vindo à SidgyMuziQ</h2>
+    <p class="text-gray-300 mb-6">
+      Um espaço criativo e artístico para <strong>jovens</strong> ouvirem e baixarem músicas exclusivas.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="bg-gray-800 p-4 rounded-xl">
+        <h3 class="text-xl mb-2">Faixa Exemplo</h3>
+        <audio controls class="w-full mb-2">
+          <source src="music1.mp3" type="audio/mpeg">
+        </audio>
+        <a href="music1.mp3" download class="bg-pink-500 px-4 py-2 rounded hover:bg-pink-600">Download</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="servicos" class="py-16 px-4 bg-black">
+    <h2 class="text-3xl font-bold mb-6 text-center">Serviços e Produtos</h2>
+    <ul class="space-y-4 max-w-xl mx-auto">
+      <li class="bg-gray-800 p-4 rounded-xl">🎧 Beats exclusivos em diversos estilos.</li>
+      <li class="bg-gray-800 p-4 rounded-xl">🎼 Músicas royalty‑free para vídeos e produções.</li>
+      <li class="bg-gray-800 p-4 rounded-xl">🎤 Produção musical personalizada.</li>
+    </ul>
+  </section>
+
+  <section id="depoimentos" class="py-16 px-4 bg-gradient-to-r from-black to-gray-900">
+    <h2 class="text-3xl font-bold mb-6 text-center">Depoimentos</h2>
+    <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+      <blockquote class="bg-gray-800 p-4 rounded-xl">
+        <p>“Os beats são incríveis, uso direto nos meus vídeos!”</p>
+        <footer class="text-sm text-gray-400">— João V., Criador de Conteúdo</footer>
+      </blockquote>
+      <blockquote class="bg-gray-800 p-4 rounded-xl">
+        <p>“Serviço profissional e entrega rápida. Recomendo!”</p>
+        <footer class="text-sm text-gray-400">— Maria B., Cantora</footer>
+      </blockquote>
+    </div>
+  </section>
+
+  <section id="contato" class="py-16 px-4 bg-black">
+    <h2 class="text-3xl font-bold mb-6 text-center">Contato</h2>
+    <p class="text-center text-gray-400 mb-6">
+      Quer saber mais ou solicitar um beat personalizado? Envie uma mensagem!
+    </p>
+    <form class="max-w-lg mx-auto space-y-4">
+      <input type="text" name="name" placeholder="Nome" class="w-full p-3 rounded bg-gray-800 text-white" required />
+      <input type="email" name="email" placeholder="Email" class="w-full p-3 rounded bg-gray-800 text-white" required />
+      <textarea name="message" placeholder="Mensagem" class="w-full p-3 rounded bg-gray-800 text-white" rows="4" required></textarea>
+      <button type="submit" class="bg-pink-500 px-6 py-2 rounded hover:bg-pink-600">Enviar</button>
+    </form>
+  </section>
+
+  <section id="login" class="py-16 px-4 bg-gray-900">
+    <h2 class="text-3xl font-bold mb-6 text-center">Área de Login</h2>
+    <form class="max-w-md mx-auto space-y-4">
+      <input type="email" name="email" placeholder="Email" class="w-full p-3 rounded bg-gray-800 text-white" required />
+      <input type="password" name="password" placeholder="Senha" class="w-full p-3 rounded bg-gray-800 text-white" required />
+      <button type="submit" class="bg-pink-500 px-6 py-2 rounded hover:bg-pink-600">Entrar</button>
+    </form>
+  </section>
+
+  <a href="https://wa.me/5511999999999" target="_blank"
+     class="fixed bottom-6 right-6 bg-green-500 p-4 rounded-full shadow-lg hover:bg-green-600"
+     title="Mande uma mensagem">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png"
+         class="w-6 h-6" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
