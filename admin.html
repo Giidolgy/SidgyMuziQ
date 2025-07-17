@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - SidgyMuziQ</title>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #111;
+      color: white;
+      padding: 2rem;
+    }
+    .logout {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: crimson;
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button class="logout" onclick="logout()">Sair</button>
+  <h1>Painel do Administrador</h1>
+  <p>Bem-vindo! Aqui você poderá adicionar músicas futuramente.</p>
+
+  <script>
+    const auth = firebase.auth();
+    auth.onAuthStateChanged(user => {
+      if (!user) {
+        window.location.href = "login.html";
+      }
+    });
+
+    function logout() {
+      auth.signOut().then(() => {
+        window.location.href = "login.html";
+      });
+    }
+  </script>
+</body>
+</html>
