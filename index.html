@@ -1,45 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <title>SidgyMuziQ</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body { font-family: sans-serif; background: #1c1c1c; color: #fff; padding: 2rem; }
-        h1 { color: #00ff99; }
-        .music-list { margin-top: 2rem; }
-        .music-item { margin-bottom: 1rem; background: #2a2a2a; padding: 1rem; border-radius: 10px; }
-        audio { width: 100%; margin-top: 0.5rem; }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SidgyMuziQ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Urbanist', sans-serif;
+      background: linear-gradient(120deg, #1f1c2c, #928dab);
+      color: #fff;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 1rem 2rem;
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      border-bottom: 2px solid #fff2;
+    }
+
+    main {
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      border-bottom: 1px solid #fff3;
+      padding-bottom: 0.5rem;
+    }
+
+    .musica {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 1rem;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    }
+
+    audio {
+      width: 100%;
+      margin-top: 0.5rem;
+    }
+
+    a.download {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: #00ffb3;
+      color: #000;
+      font-weight: bold;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    a.download:hover {
+      background: #00c28f;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 4rem;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+  </style>
 </head>
 <body>
-    <h1>🎵 SidgyMuziQ - Músicas Disponíveis</h1>
-    <div class="music-list" id="musicList">
-        <!-- Músicas serão carregadas aqui -->
-    </div>
+  <header>
+    SIDGY MUZIQ 🎵
+  </header>
+  <main>
+    <h2>Músicas Disponíveis</h2>
+    <div id="lista-musicas"></div>
+  </main>
+  <footer>
+    © 2025 SidgyMuziQ. Todos os direitos reservados.
+  </footer>
 
-    <script>
-        // Lista de músicas (coloque os links do Google Drive abaixo)
-        const musicas = [
-  {
-    "nome": "Infinity MusiQ ft uLazi - AFZAL",
-    "link": "https://docs.google.com/uc?export=download&id=1kBnBxtnBqz7E72Jt0E-Jt6G_bUFfvvgX"
-  }
-]
+  <script>
+    const musicas = [
+      {
+        nome: "Sidgy - Amor de Verdade",
+        link: "https://docs.google.com/uc?export=download&id=SEU_ID_AQUI"
+      },
+      {
+        nome: "Sidgy - Outra Faixa",
+        link: "https://docs.google.com/uc?export=download&id=OUTRO_ID_AQUI"
+      }
+    ];
 
-        const musicListDiv = document.getElementById("musicList");
-        musicas.forEach(musica => {
-            const div = document.createElement("div");
-            div.className = "music-item";
-            div.innerHTML = `
-                <strong>${musica.nome}</strong><br/>
-                <audio controls src="${musica.link}"></audio><br/>
-                <a href="${musica.link}" download>⬇️ Download</a>
-            `;
-            musicListDiv.appendChild(div);
-        });
-    </script>
+    const container = document.getElementById("lista-musicas");
+    musicas.forEach(musica => {
+      const div = document.createElement("div");
+      div.className = "musica";
+      div.innerHTML = `
+        <strong>${musica.nome}</strong>
+        <audio controls src="${musica.link}"></audio>
+        <br/>
+        <a class="download" href="${musica.link}" download>Baixar</a>
+      `;
+      container.appendChild(div);
+    });
+  </script>
 </body>
 </html>
-
