@@ -1,159 +1,70 @@
-<!DOCTYPE html><html lang="pt">
+<!DOCTYPE html>
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>SidgyMuziQ</title>
-  <link href="https://fonts.googleapis.com/css2?family=Urbanist:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
-      font-family: 'Urbanist', sans-serif;
-      background: linear-gradient(120deg, #1f1c2c, #928dab);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #111;
       color: #fff;
-    }header {
-  background: rgba(0, 0, 0, 0.7);
-  padding: 1rem 2rem;
-  text-align: center;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  border-bottom: 2px solid #fff2;
-}
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem;
+    }
 
-main {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 1rem;
-}
+    header {
+      text-align: center;
+    }
 
-h2 {
-  margin-bottom: 1rem;
-  border-bottom: 1px solid #fff3;
-  padding-bottom: 0.5rem;
-}
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+      color: #00c853;
+    }
 
-.musica {
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.05);
-  padding: 1rem;
-  margin-bottom: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-}
+    p {
+      font-size: 1.1rem;
+      max-width: 600px;
+    }
 
-.musica img {
-  width: 100%;
-  max-height: 300px;
-  object-fit: cover;
-  border-radius: 10px;
-  margin-bottom: 1rem;
-}
+    .admin-btn {
+      display: inline-block;
+      background-color: #00c853;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-top: 2rem;
+      box-shadow: 0 0 10px rgba(0,0,0,0.4);
+      transition: background-color 0.3s ease;
+    }
 
-.musica h3, .musica p {
-  margin: 0.2rem 0;
-}
+    .admin-btn:hover {
+      background-color: #00b342;
+    }
 
-audio {
-  width: 100%;
-  margin-top: 1rem;
-}
-
-a.download {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.5rem 1rem;
-  background: #00ffb3;
-  color: #000;
-  font-weight: bold;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.3s;
-}
-
-a.download:hover {
-  background: #00c28f;
-}
-
-.whatsapp-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 60px;
-  height: 60px;
-  font-size: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  z-index: 1000;
-  text-decoration: none;
-}
-
-footer {
-  text-align: center;
-  margin-top: 4rem;
-  padding: 2rem;
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
+    footer {
+      margin-top: 4rem;
+      font-size: 0.9rem;
+      color: #888;
+    }
   </style>
 </head>
 <body>
   <header>
-    SIDGY MUZIQ 🎵
-  </header>
-  <main>
-    <h2>Músicas Disponíveis</h2>
-    <div id="lista-musicas"></div>
-  </main>
-  <a class="whatsapp-btn" href="https://wa.me/258844809073?text=APRESENTE%20SUA%20PREOCUPAÇÃO!" target="_blank" title="Fale conosco no WhatsApp">💬</a>
-  <footer>
-    © 2025 SidgyMuziQ. Todos os direitos reservados.
-  </footer>  <script>
-    const musicas = [
-      {
-        nome: "AFZAL",
-        artista: "Infinity MusiQ ft uLazi",
-        link: "https://docs.google.com/uc?export=download&id=1kBnBxtnBqz7E72Jt0E-Jt6G_bUFfvvgX",
-        capa: "https://i.ytimg.com/vi/ZDai_Ou4nyk/maxresdefault.jpg"
-      }
-    ];
+    <h1>SidgyMuziQ</h1>
+    <p>Bem-vindo ao portal criativo e artístico para jovens. Explore, curta e baixe músicas incríveis diretamente da nossa plataforma!</p>
 
-    const container = document.getElementById("lista-musicas");
-    musicas.forEach(musica => {
-      const div = document.createElement("div");
-      div.className = "musica";
-      div.innerHTML = `
-        <img src="${musica.capa}" alt="Capa da música">
-        <h3>${musica.nome}</h3>
-        <p><strong>Artista:</strong> ${musica.artista}</p>
-        <audio controls src="${musica.link}"></audio>
-        <a class="download" href="${musica.link}" download>⬇️ Baixar Música</a>
-      `;
-      container.appendChild(div);
-    }); <!-- Botão para acessar a área do administrador -->
-<div style="text-align: center; margin-top: 40px;">
-  <a href="login.html" style="
-    display: inline-block;
-    background-color: #00c853;
-    color: white;
-    padding: 12px 24px;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: bold;
-    font-family: Arial, sans-serif;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    transition: background-color 0.3s ease;
-  " onmouseover="this.style.backgroundColor='#00b342'" onmouseout="this.style.backgroundColor='#00c853'">
-    Área do Administrador
-  </a>
-</div>
-    
-  </script></body>
+    <a href="login.html" class="admin-btn">Área do Administrador</a>
+  </header>
+
+  <footer>
+    &copy; 2025 SidgyMuziQ. Todos os direitos reservados.
+  </footer>
+</body>
 </html>
