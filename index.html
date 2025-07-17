@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt">
+<!DOCTYPE html><html lang="pt">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,66 +10,79 @@
       font-family: 'Urbanist', sans-serif;
       background: linear-gradient(120deg, #1f1c2c, #928dab);
       color: #fff;
-    }
+    }header {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-bottom: 2px solid #fff2;
+}
 
-    header {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 1rem 2rem;
-      text-align: center;
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      border-bottom: 2px solid #fff2;
-    }
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem;
+}
 
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
+h2 {
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #fff3;
+  padding-bottom: 0.5rem;
+}
 
-    h2 {
-      margin-bottom: 1rem;
-      border-bottom: 1px solid #fff3;
-      padding-bottom: 0.5rem;
-    }
+.musica {
+  display: flex;
+  flex-direction: column;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  margin-bottom: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+}
 
-    .musica {
-      background: rgba(255, 255, 255, 0.05);
-      padding: 1rem;
-      margin-bottom: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-    }
+.musica img {
+  width: 100%;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
 
-    audio {
-      width: 100%;
-      margin-top: 0.5rem;
-    }
+.musica h3, .musica p {
+  margin: 0.2rem 0;
+}
 
-    a.download {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #00ffb3;
-      color: #000;
-      font-weight: bold;
-      border-radius: 6px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
+audio {
+  width: 100%;
+  margin-top: 1rem;
+}
 
-    a.download:hover {
-      background: #00c28f;
-    }
+a.download {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: #00ffb3;
+  color: #000;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.3s;
+}
 
-    footer {
-      text-align: center;
-      margin-top: 4rem;
-      padding: 2rem;
-      font-size: 0.9rem;
-      color: #ccc;
-    }
+a.download:hover {
+  background: #00c28f;
+}
+
+footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
   </style>
 </head>
 <body>
@@ -83,28 +95,28 @@
   </main>
   <footer>
     © 2025 SidgyMuziQ. Todos os direitos reservados.
-  </footer>
-
-  <script>
+  </footer>  <script>
     const musicas = [
-  {
-    "nome": "Infinity MusiQ ft uLazi - AFZAL",
-    "link": "https://docs.google.com/uc?export=download&id=1kBnBxtnBqz7E72Jt0E-Jt6G_bUFfvvgX"
-  }
-]
+      {
+        nome: "AFZAL",
+        artista: "Infinity MusiQ ft uLazi",
+        link: "https://docs.google.com/uc?export=download&id=1kBnBxtnBqz7E72Jt0E-Jt6G_bUFfvvgX",
+        capa: "https://i.ytimg.com/vi/ZDai_Ou4nyk/maxresdefault.jpg"
+      }
+    ];
 
     const container = document.getElementById("lista-musicas");
     musicas.forEach(musica => {
       const div = document.createElement("div");
       div.className = "musica";
       div.innerHTML = `
-        <strong>${musica.nome}</strong>
+        <img src="${musica.capa}" alt="Capa da música">
+        <h3>${musica.nome}</h3>
+        <p><strong>Artista:</strong> ${musica.artista}</p>
         <audio controls src="${musica.link}"></audio>
-        <br/>
-        <a class="download" href="${musica.link}" download>Baixar</a>
+        <a class="download" href="${musica.link}" download>⬇️ Baixar Música</a>
       `;
       container.appendChild(div);
     });
-  </script>
-</body>
+  </script></body>
 </html>
