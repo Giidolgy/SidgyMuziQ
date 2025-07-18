@@ -1,49 +1,133 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
-  <title>Admin - SidgyMuziQ</title>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
-  <script src="firebase-config.js"></script>
+  <title>Admin - Upload de Músicas</title>
   <style>
     body {
-      font-family: sans-serif;
-      background: #111;
+      background-color: #121212;
       color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
       padding: 2rem;
     }
-    .logout {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      background: crimson;
-      border: none;
-      padding: 0.5rem 1rem;
-      border-radius: 4px;
+
+    h1 {
+      color: #00c853;
+    }
+
+    input[type="file"] {
+      margin: 1rem 0;
+    }
+
+    .link {
+      margin-top: 1rem;
+      color: #00e676;
+      word-break: break-all;
+    }
+
+    progress {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    button {
+      background-color: #e53935;
       color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
       cursor: pointer;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <button class="logout" onclick="logout()">Sair</button>
-  <h1>Painel do Administrador</h1>
-  <p>Bem-vindo! Aqui você poderá adicionar músicas futuramente.</p>
 
+  <h1>🎶 Painel Admin - Enviar Música</h1>
+
+  <h3>Upload da Faixa</h3>
+  <input type="file" id="audioFile"><br>
+  <progress id="progressAudio" value="0" max="100"></progress>
+  <p class="link" id="audioLink"></p>
+
+  <h3>Upload da Imagem de Capa</h3>
+  <input type="file" id="imageFile"><br>
+  <progress id="progressImage" value="0" max="100"></progress>
+  <p class="link" id="imageLink"></p>
+
+  <button onclick="logout()">Sair</button>
+
+  <!-- Firebase SDKs -->
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-storage-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-auth-compat.js"></script>
+
+  <!-- Firebase Config -->
   <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBHY_c2Osu_1z_3_OeypN78q9IJTXLgSIA",
+      authDomain: "sidgymuziq.firebaseapp.com",
+      projectId: "sidgymuziq",
+      storageBucket: "sidgymuziq.appspot.com",
+      messagingSenderId: "202229787182",
+      appId: "1:202229787182:web:32e5ffc3aa8830bb384dbf"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Upload & Logout Scripts -->
+  <script>
+    const storage = firebase.storage();
     const auth = firebase.auth();
-    auth.onAuthStateChanged(user => {
-      if (!user) {
-        window.location.href = "login.html";
-      }
+
+    // Upload de música
+    document.getElementById('audioFile').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const storageRef = storage.ref('musicas/' + file.name);
+      const task = storageRef.put(file);
+
+      task.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          document.getElementById('progressAudio').value = progress;
+        },
+        (error) => alert('Erro no upload: ' + error),
+        () => {
+          task.snapshot.ref.getDownloadURL().then((url) => {
+            document.getElementById('audioLink').innerText = url;
+          });
+        }
+      );
     });
 
+    // Upload de imagem
+    document.getElementById('imageFile').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      const storageRef = storage.ref('capas/' + file.name);
+      const task = storageRef.put(file);
+
+      task.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          document.getElementById('progressImage').value = progress;
+        },
+        (error) => alert('Erro no upload: ' + error),
+        () => {
+          task.snapshot.ref.getDownloadURL().then((url) => {
+            document.getElementById('imageLink').innerText = url;
+          });
+        }
+      );
+    });
+
+    // Logout
     function logout() {
       auth.signOut().then(() => {
         window.location.href = "login.html";
       });
     }
   </script>
+
 </body>
-</html>
+  </html>
