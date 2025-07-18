@@ -1,21 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
   <title>Login - SidgyMuziQ</title>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js"></script>
-  <script src="firebase-config.js"></script>
+  <meta charset="UTF-8" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background-color: #111;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #111;
       color: white;
+      font-family: Arial, sans-serif;
     }
+
     .login-container {
       background-color: #222;
       padding: 2rem;
@@ -23,6 +21,7 @@
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
       width: 300px;
     }
+
     input {
       width: 100%;
       padding: 0.5rem;
@@ -30,6 +29,7 @@
       border: none;
       border-radius: 4px;
     }
+
     button {
       width: 100%;
       padding: 0.7rem;
@@ -39,6 +39,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
+
     #error-message {
       color: red;
       margin-top: 1rem;
@@ -48,20 +49,39 @@
 <body>
   <div class="login-container">
     <h2>Admin Login</h2>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="senha" placeholder="Senha" />
+    <button onclick="conectar()">Entrar</button>
     <p id="error-message"></p>
   </div>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.24.0/firebase-auth-compat.js"></script>
+  
+  <!-- Configuração do Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyBHY_c2Osu_1z_3_OeypN78q9IJTXLgSIA",
+      authDomain: "sidgymuziq.firebaseapp.com",
+      projectId: "sidgymuziq",
+      storageBucket: "sidgymuziq.appspot.com",
+      messagingSenderId: "SEU_SENDER_ID",
+      appId: "SEU_APP_ID"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Login Script -->
   <script>
     const auth = firebase.auth();
 
-    function login() {
+    function conectar() {
       const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+      const senha = document.getElementById("senha").value;
 
-      auth.signInWithEmailAndPassword(email, password)
+      auth.signInWithEmailAndPassword(email, senha)
         .then(() => {
           window.location.href = "admin.html";
         })
@@ -71,4 +91,4 @@
     }
   </script>
 </body>
-  </html>
+</html>
